@@ -20,7 +20,8 @@ const getPost = async (payload: {
   search: string | undefined;
   tags: string[];
   isFeatured: boolean | undefined;
-  status: PostStatus
+  status: PostStatus | undefined;
+  user_id: string
 }) => {
 
 
@@ -71,6 +72,12 @@ const getPost = async (payload: {
     if(payload.status){
         andConditions.push({
             status: payload.status as PostStatus
+        })
+    }
+
+    if(payload.user_id){
+        andConditions.push({
+            user_id: payload.user_id as string
         })
     }
 

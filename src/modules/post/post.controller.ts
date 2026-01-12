@@ -34,11 +34,13 @@ const getPost = async (req: Request, res: Response) => {
       : undefined;
 
     const status = req.query.status as PostStatus | undefined;  
+    const user_id = req.query.user_id as string
     const result = await PostService.getPost({
       search: searchString,
       tags,
       isFeatured,
-      status
+      status,
+      user_id
     });
     res.status(200).json(result);
   } catch (error) {
